@@ -5,7 +5,7 @@ class WordCloudData {
   }
 
   isLetter(char) {
-    return 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-'.indexOf(char) > -1;
+    return 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.indexOf(char) > -1;
   }
 
   isWordModifier(char) {
