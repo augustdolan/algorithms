@@ -4,23 +4,18 @@ function getProductsOfAllIntsExceptAtIndex(intArray) {
   if (intArray.length < 2) {
     throw new Error();
   }
+  let currentProduct = 1;
   const productArray = [];
-  let beforeIndexProduct = 1;
-  let afterIndexProduct = 1;
-  let beforeIndexProductArr = [1]
-  let afterIndexProductArr = [1]
 
-  for (let i = 0; i < intArray.length - 1; i++) {
-    beforeIndexProductArr.push(beforeIndexProduct *= intArray[i]);
+  for (let i = 0; i < intArray.length; i++) {
+    productArray[i] = currentProduct;
+    currentProduct *= intArray[i];
   }
 
-  for (let i = intArray.length - 1; i > 0; i--) {
-    afterIndexProductArr.push(afterIndexProduct *= intArray[i]);
-  }
-  afterIndexProductArr.reverse();
-
-  for (let i = 0; i < beforeIndexProductArr.length; i++) {
-    productArray.push(beforeIndexProductArr[i] *= afterIndexProductArr[i]);
+  currentProduct = 1;
+  for (let i = intArray.length - 1; i > -1; i--) {
+    productArray[i] = productArray[i] * currentProduct;
+    currentProduct *= intArray[i];
   }
 
   return productArray;
