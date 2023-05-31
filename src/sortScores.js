@@ -1,12 +1,17 @@
 function sortScores(unorderedScores, highestPossibleScore) {
-  const absPositionScoresArr = []
+  const scoreCountByPosition = new Array(highestPossibleScore + 1).fill(0); // start at none counts for all possible scores
   for (let i = 0; i < unorderedScores.length; i++) {
     const currentScore = unorderedScores[i];
-    absPositionScoresArr[highestPossibleScore - currentScore] = currentScore
+    scoreCountByPosition[currentScore]++;
   }
   
   const orderedScores = [];
-  absPositionScoresArr.forEach(element => { orderedScores.push(element)})
+  for (let currentScore = highestPossibleScore; currentScore >= 0; currentScore--) {
+    const scoreCount = scoreCountByPosition[currentScore];
+    for (let timesAdded = 0; timesAdded < scoreCount; timesAdded++) {
+      orderedScores.push(currentScore);
+    }
+  }
   
   return orderedScores;
 }
